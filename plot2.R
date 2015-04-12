@@ -1,0 +1,10 @@
+setwd("C:/RWork/exp")
+gData <- read.table("household_power_consumption.txt", skip=66637, nrows = 2880,sep=";")
+colNames <- read.table("household_power_consumption.txt", nrows=1, sep=";",header=TRUE)
+names(gData) <- names(colNames)
+myLabels <- c("Thu", "Fri", "Sat")
+
+png(file="./plot2.png", bg="transparent")
+plot(gData$Global_active_power,type="l",xaxt="n", xlab="",ylab="Global Active Power (kilowatts)")
+axis(1,at=seq(0,2880,1440),labels=myLabels)
+dev.off()
